@@ -99,6 +99,10 @@
 								
 								thus.$net.fetch(function(v) {
 									uni.setStorageSync('info', JSON.stringify(v));
+									uni.navigateBack({
+										animationDuration:100
+									})
+									
 								}, thus.$net.wxLogin,param,'post');
 								// thus.loadData();
 								
@@ -118,11 +122,8 @@
 						 
 					},
 					fail(info) {
-						console.log(info);
-						uni.showToast({
-							icon: 'none',
-							title: '授权失败，登录失败'
-						})
+						 
+						 
 					}
 				})
 
