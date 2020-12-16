@@ -5,8 +5,7 @@
 		<swiper class="screen-swiper" :class="dotStyle?'square-dot':'round-dot'" :indicator-dots="true" :circular="true"
 		 :autoplay="true" interval="5000" duration="500">
 			<swiper-item v-for="(item,index) in swiperList" :key="index">
-				<image :src="item.img" mode="aspectFill" v-if="item.type=='image'"></image>
-				<video :src="item.img" autoplay loop muted :show-play-btn="false" :controls="false" objectFit="cover" v-if="item.type=='video'"></video>
+				<image :src="item" mode="aspectFill"   ></image>
 			</swiper-item>
 		</swiper>
 		 
@@ -16,18 +15,24 @@
 		 		<view class="cu-item" v-for="(item, index) in dataList" :key="index">
 		 			<navigator :url="'../detail/detail?id=' +  item.goods_id">
 		 				<view class="content text-center">
-		 					<image
+		 					<image v-if="!item.text "  
+								@error="err(index)"
+								
+								:id="item.name"
 		 						class="cu-avatar xl  margin-10 "
 		 						style="width: 96%;height: 280rpx; margin: 2%;"
 		 						:src="item.cover"
 		 						:style="'background-image: url(' + item.cover + ');'"
 		 					></image>
+							
+							 
+							
+							<view    v-if="item.text"	class="text-center"	  style="width: 96%;height: 280rpx; margin: 2%;align-items: center; ">
+								<view  class="cu-avatar xl round margin-left text-center bg-red">{{item.name}}</view> 
+							</view>
 		 
-		 					<text class="text-ABC text-lg " style="color: black;">{{ item.name }}</text>
-		 					<view class="text-center">
-		 						<text class="text-price text-lg" style="color: red;">{{ item.price_selling }}</text>
-		 						<text class="text-price " style=" font-style: italic;text-decoration: line-through;">{{ item.price_market }}</text>
-		 					</view>
+		 					<view class="text-ABC text-lg lg" style="color: black;size: 22rpx;">{{ item.name }}</view>
+		 					 
 		 				</view>
 		 			</navigator>
 		 		</view> 
@@ -54,6 +59,7 @@
 		},
 		onLoad() {
 			this.TowerSwiper('swiperList');
+			
 			// 初始化towerSwiper 传已有的数组名即可
 			
 			var thus=this;
@@ -66,21 +72,26 @@
 			
 		},
 		methods: { 
+			err(index){
+				
+				this.dataList[index].text=true;
+				 
+				
+			},
 			
 			loadData() {
 				
 				var thus = this;
 				this.$net.fetch(
-					function(r) {
+					function(ret) {
 						 
-						if(r.list.current_page<r.list.last_page){
-							console.log('12');
-							thus._isEnded=false;
+						if (ret.page.pages <= ret.page.current) {
+							thus._isEnded = true;
 						}else{
 							console.log('23');
-							thus._isEnded=true;
+							thus._isEnded=false;
 						}
-						thus.dataList =thus.dataList.concat(r.list.data) ;
+						thus.dataList =thus.dataList.concat(ret.list) ;
 					},
 					this.$net.getNewsItem,
 					{

@@ -15,7 +15,7 @@
 				<view>
 					<!-- <view class=" margin-top-sm">我的订单</view> -->
 
-					<view class="cu-list grid col-4">
+					<!-- <view class="cu-list grid col-4">
 						<view class="cu-item">
 							<navigator url="../order/order?id=all" class="cuIcon-text text-red"><text class="text-black">我的订单</text></navigator>
 						</view>
@@ -29,16 +29,16 @@
 							<navigator url="../order/order?id=received" class="cuIcon-safe text-red"><text class="text-black">待收货</text></navigator>
 						</view>
 						 
-					</view>
+					</view> -->
 				</view>
 
 				<view class="cu-list menu margin-top-xl">
-					<view class="cu-item arrow">
+					<!-- <view class="cu-item arrow">
 						<navigator class="content" url="../address/address" hover-class="none">
 							<text class="cuIcon-addressbook text-gray"></text>
 							<text class="text-grey">收货地址</text>
 						</navigator>
-					</view>
+					</view> -->
 				 
 					
 				 

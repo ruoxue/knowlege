@@ -104,7 +104,7 @@
 									})
 									
 								}, thus.$net.wxLogin,param,'post');
-								// thus.loadData();
+								 
 								
 								
 								
