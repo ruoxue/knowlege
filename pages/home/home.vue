@@ -14,14 +14,30 @@
 		 <scroll-view scroll-y>
 		 	<view class="grid col-2 cu-list  no-padding ">
 		 		<view class="cu-item" v-for="(item, index) in dataList" :key="index">
-		 			<navigator :url="'../detail/detail?id=' +  item.goods_id">
+		 			<navigator :url="'../detail/detail?id=' +  item.id">
 		 				<view class="content text-center">
-		 					<image
-		 						class="cu-avatar xl  margin-10 "
-		 						style="width: 96%;height: 280rpx; margin: 2%;"
-		 						:src="item.cover"
-		 						:style="'background-image: url(' + item.cover + ');'"
-		 					></image>
+		 					
+							<image v-if="item.cover.indexOf('gif')!=-1"
+								class="cu-avatar xl  margin-10 "
+								style="width: 96%;height: 280rpx; margin: 2%;"
+								:src="item.cover"
+								:style="'background-image: url(' + item.cover + ');'"
+							></image>
+							<view v-if="item.cover.indexOf('gif')==-1"
+								class="cu-avatar xl  margin-10 "
+								style="width: 96%;height: 280rpx; margin: 2%;"
+								:src="item.cover"
+								:style="'background-image: url(' + item.cover + ');'"
+							>
+							
+							<view class="cu-avatar lg">
+								{{item.title}}
+							</view>
+							</view>
+							
+							
+							
+							
 		 
 		 					<text class="text-ABC text-lg " style="color: black;">{{ item.name }}</text>
 		 					<view class="text-center">
@@ -80,7 +96,7 @@
 							console.log('23');
 							thus._isEnded=true;
 						}
-						thus.dataList =thus.dataList.concat(r.list.data) ;
+						thus.dataList =thus.dataList.concat(r.list) ;
 					},
 					this.$net.getNewsItem,
 					{
