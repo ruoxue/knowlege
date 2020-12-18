@@ -1,9 +1,11 @@
+ 
+  
 // const host = "http://qiafan.applinzi.com/ThinkAdmin/public/index.php/data/";
 // const host = "http://127.0.0.1:8099/index.php/data/";
 // const host = "http://127.0.0.1:8888/public/index.php/api/";
-const host = "http://127.0.0.1/index.php/api/";
+// const host = "http://127.0.0.1/index.php/api/";
 
-// const host='https://qiafan.applinzi.com/qiafan/public/index.php/api/';
+const host='https://qiafan.applinzi.com/qiafan/public/index.php/api/';
 
 const getSlider = "wxapp/base"; //轮播
 const getCate = "category/lists"; //类型
@@ -27,9 +29,9 @@ const wxLogin = "user/login"; // wx login
 const loginin = "login/in"; //
 const register= "login/register"; //
 
-const bindFrom = "center/bindFrom";
-const invited = "center/getFrom";
-const getUserInfo = "center/get";
+const bindFrom = "user.index/bindFrom";
+const invited = "user.index/getFrom";
+const getUserInfo = "user.index/detail";
 
 const getNewsItem = "article/lists";
 const getNewsComment = "article/getComment";
@@ -84,7 +86,7 @@ const fetch = (ret, address, param, method = 'get') => {
 	if(param==null){
 		param={};
 	}
-	param['wxapp_id']=10001;
+	param['wxapp_id']=10005;
 
 
 	var header = {
@@ -181,4 +183,4 @@ export default {
 	orderDetail,
 	wxLogin
 
-}
+} 
