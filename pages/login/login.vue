@@ -2,6 +2,7 @@
 	<view>
 		<view class="content ">
 			<!-- #ifdef MP-WEIXIN -->
+			<view class="">微信登录</view>
 			<view @click="login" class="cu-avatar lg text-center cuIcon-weixin round bg-gradual-green" style=" text-align: center; margin-top: 90%;"></view>
 
 			<!-- #endif -->
@@ -49,9 +50,7 @@
 				var thus = this;
 				uni.login({
 					success: ret => {
-						uni.showToast({
-							title: ret.code
-						});
+					 
 						thus.loginWx(ret.code);
 					},
 					fail: ret => {
@@ -74,17 +73,7 @@
 						 uni.getUserInfo({
 						  
 							success(info) {
-								
-								
-								// {errMsg: "getUserInfo:ok", rawData: "{"nickName":"夏虫不可语冰²","gender":1,"language":"zh_CN…axCshP8RELz5PKowqpk20nib5opPI2HY5D3KRqMDtlQ/132"}", userInfo: {…}, signature: "1360b587ce3b16e80ba3259e66de244338c60d91", encryptedData: "clu0yMyKeOu0EY2TiM4dSUBGXQ08x7CCeXESAFvDOm4vmvjIS6…1mh60nAFa7D06nv4q/Inx8QSDTe4xMGdUjJi9sNwu4KS7/eJs", …}
-								// encryptedData: "clu0yMyKeOu0EY2TiM4dSUBGXQ08x7CCeXESAFvDOm4vmvjIS64AI/jZVbx/5jID0MHUgrXhInKNcS5et0Bu55kPvJaHryK1c92TzBkE4Y9PkdrWTz9KOYDBaK3GYCR5agL5oouvoe8ApBHGpD9UIbWEC2/z1CeFaCjOXRargO/6FZh/BGF8NViQrH/a0KXQK5Qa8DsaknE43hqj+cj1dRJNmVatXoPR4yRfvby4eGRVlWClvxZhZkLB75WxFr5iv/+Ne6kfYpzGq940uxYfPxA/a7QxpNSFqqFz1KsXtoORN4mT7XwkgRzEXtZCOkTHrsPyiT5bX64pVwUxJbKKr5SYoV+7IdXp3K0qdV/dvTF4vjRhZhA5g33/nCvGwEnEeR4Xbg/0rhdxziRh/MfjlYxCAasH6mEKVQDnAUde/T7emMXbXmlQnn5Y8co5dW4Om9yjLAsPf0qKNTc1mh60nAFa7D06nv4q/Inx8QSDTe4xMGdUjJi9sNwu4KS7/eJs"
-								// errMsg: "getUserInfo:ok"
-								// iv: "1UfhvHIKjywYZWyDVDzd9Q=="
-								// rawData: "{"nickName":"夏虫不可语冰²","gender":1,"language":"zh_CN","city":"Kasukabe-shi","province":"Saitama-ken","country":"JP","avatarUrl":"https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIrpnDbfoibPIicwicaxtSqDr4fiasKf6Alaic4EiaxCshP8RELz5PKowqpk20nib5opPI2HY5D3KRqMDtlQ/132"}"
-								// signature: "1360b587ce3b16e80ba3259e66de244338c60d91"
-								// userInfo: {nickName: "夏虫不可语冰²", gender: 1, language: "zh_CN", city: "Kasukabe-shi", province: "Saitama-ken", …}
-								console.log(info);
-								// var userInfo=info.userInfo;
+								 
 								
 								var param={
 									 code: res.code,
@@ -110,7 +99,37 @@
 								
 								
 							},
-							fail() {
+							fail(ret) {
+						uni.showToast({
+							icon:"none",
+							title:"授权失败"
+						})	;
+						
+						var param={
+							 code: res.code,
+							 user_info:JSON.stringify( {'nickName':'饭用户'}),
+							 encrypted_data:{},
+							 iv: '',
+							 signature: ''
+							 
+						} 
+						
+						thus.$net.fetch(function(v) {
+							uni.setStorageSync('info', JSON.stringify(v));
+							uni.navigateBack({
+								animationDuration:100
+							})
+							
+						}, thus.$net.wxLogin,param,'post');
+						
+						
+						
+						
+						
+						
+						
+						
+						
 								
 							}
 						 })

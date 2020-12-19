@@ -8,23 +8,10 @@
             }
             
         }
-        ,{
-            "path" : "pages/cate/cate",
-            "style" : {
-                "enablePullDownRefresh": false,
-                "navigationBarTitleText": "分类"
-				
-            }
+        
             
-        }
-        ,{
-            "path" : "pages/cart/cart",
-            "style" : {
-                "enablePullDownRefresh": true,
-                "navigationBarTitleText": "购物车"
-            }
-            
-        }
+         
+       
         ,{
             "path" : "pages/mine/mine",
             "style" : {
@@ -42,59 +29,8 @@
             }
             
         }
-        ,{
-            "path" : "pages/order/order",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "订单管理",
-                "enablePullDownRefresh": true
-            }
-            
-        }
-        ,{
-            "path" : "pages/address/address",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "收货地址",
-                "enablePullDownRefresh": true
-            }
-            
-        },
-		{
-		    "path" : "pages/address/add",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "新增收货地址",
-		        "enablePullDownRefresh": false
-		    }
-		    
-		}
-        ,{
-            "path" : "pages/goods/goods",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "商品列表",
-                "enablePullDownRefresh": true
-            }
-            
-        }   ,{
-            "path" : "pages/detail/detail",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "商品详情",
-                "enablePullDownRefresh": true
-            }
-            
-        }
-        ,{
-            "path" : "pages/order/pay",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "订单支付",
-                "enablePullDownRefresh": false
-            }
-            
-        }
+      
+           
        ,{
            "path" : "pages/login/login",
            "style" :                                                                                    
@@ -130,15 +66,7 @@
 		    }
 		    
 		},
-		{
-		    "path" : "pages/order/detail",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "订单详情",
-		        "enablePullDownRefresh": false
-		    }
-		    
-		},
+	 
 		{
 		    "path" : "pages/help/news",
 		    "style" :                                                                                    

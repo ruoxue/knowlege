@@ -27,9 +27,9 @@ const wxLogin = "user/login"; // wx login
 const loginin = "login/in"; //
 const register= "login/register"; //
 
-const bindFrom = "center/bindFrom";
-const invited = "center/getFrom";
-const getUserInfo = "center/get";
+const bindFrom = "user.index/bindFrom";
+const invited = "user.index/getFrom";
+const getUserInfo = "user.index/detail";
 
 const getNewsItem = "article/lists";
 const getNewsComment = "article/getComment";
@@ -71,7 +71,10 @@ const fetch = (ret, address, param, method = 'get') => {
 	}
 
 
-	if (method == 'post' &&address.indexOf('login')==-1&&
+	if (method == 'post' &&address.indexOf('login')==-1
+	
+	&&address.indexOf('user.index/detail')!=-1&&
+	
 	 (infoJ.token == undefined || '' == (infoJ.token))) {
 
 		uni.navigateTo({
